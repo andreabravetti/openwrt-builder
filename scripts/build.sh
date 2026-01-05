@@ -7,6 +7,9 @@ cd /openwrt || {
     exit 1
 }
 
+# Git safe dir
+[ -d .git ] && git config --global --add safe.directory /openwrt
+
 # Update feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
