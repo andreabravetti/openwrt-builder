@@ -6,9 +6,9 @@ docker ps -aq --filter="name=$BUILDER_IMAGE" \
 | xargs -r docker stop | xargs -r docker rm
 
 docker run -d --name $BUILDER_IMAGE --rm \
-       -v ../openwrt:/root/openwrt \
+       -v ../openwrt:/openwrt \
        -it $BUILDER_IMAGE:latest
 
 sleep 1
 
-docker exec -it $BUILDER_IMAGE bash /root/scripts/build.sh
+docker exec -it $BUILDER_IMAGE bash /run.sh

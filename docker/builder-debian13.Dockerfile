@@ -8,9 +8,9 @@ RUN apt install -y build-essential clang flex \
         bison g++ gawk gcc-multilib g++-multilib \
         gettext git libncurses5-dev libssl-dev \
         python3-setuptools rsync swig unzip \
-        zlib1g-dev file wget
+        zlib1g-dev file wget sudo
 RUN apt clean
 
-RUN mkdir -p /root/scripts
-
-COPY scripts/build.sh /root/scripts/build.sh
+COPY scripts/runas /etc/sudoers.d/runas
+COPY scripts/build.sh /build.sh
+COPY scripts/run.sh /run.sh

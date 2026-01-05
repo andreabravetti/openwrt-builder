@@ -10,6 +10,6 @@ RUN dnf --setopt=install_weak_deps=False install -y --skip-broken \
         perl-JSON-PP perl-lib perl-Thread-Queue perl-Time-Piece
 RUN dnf clean all
 
-RUN mkdir -p /root/scripts
-
-COPY scripts/build.sh /root/scripts/build.sh
+COPY scripts/runas /etc/sudoers.d/runas
+COPY scripts/build.sh /build.sh
+COPY scripts/run.sh /run.sh
