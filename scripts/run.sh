@@ -2,15 +2,18 @@
 
 set -e
 
-cd /openwrt || {
+cd /source || {
     echo "OpenWrt mount point not found: Use -v openwrt:/openwrt"
     exit 1
 }
 
-make distclean
+rm -rf openwrt || {
+    echo "Can't remove openwrt"
+    exit 1
+}
 
-BECOME_UID=$(stat -c '%u' /openwrt)
-BECOME_GID=$(stat -c '%g' /openwrt)
+BECOME_UID=$(stat -c '%u' /source)
+BECOME_GID=$(stat -c '%g' /source)
 
 # Setup the user
 sed -i "/^openwrt:x:.*$/d" /etc/group

@@ -2,8 +2,8 @@
 
 BUILDER_IMAGE=builder-debian12
 
-#BUILD_OPT="--no-cache"
-BUILD_OPT=""
+#BUILD_OPT=""
+BUILD_OPT="--no-cache"
 
 ./00_stop.sh
 

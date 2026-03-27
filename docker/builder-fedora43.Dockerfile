@@ -13,3 +13,4 @@ RUN dnf clean all
 COPY scripts/runas /etc/sudoers.d/runas
 COPY scripts/build.sh /build.sh
 COPY scripts/run.sh /run.sh
+COPY patches/9999-new-tx-power-eeprom-0s.patch /patches/9999-new-tx-power-eeprom-0s.patch

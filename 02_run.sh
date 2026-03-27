@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BUILDER_IMAGE=builder-debian12
-SOURCE_PATH=../openwrt
+SOURCE_PATH=./source
 
 [ -d $SOURCE_PATH ] || {
     echo "OpenWrt source not found in $SOURCE_PATH."
@@ -13,7 +13,7 @@ docker ps -aq --filter="name=$BUILDER_IMAGE" \
 | xargs -r docker stop | xargs -r docker rm
 
 docker run -d --name $BUILDER_IMAGE --rm \
-       -v $SOURCE_PATH:/openwrt \
+       -v $SOURCE_PATH:/source \
        -it $BUILDER_IMAGE:latest
 
 sleep 1
